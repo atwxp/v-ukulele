@@ -126,7 +126,7 @@
     .player {
         position: relative;
         height: 100%;
-        background: url(../../assets/img/bg.png) no-repeat center;
+        background: url(/v-ukulele/assets/img/bg.png) no-repeat center;
         -webkit-background-size: cover;
         background-size: cover;
         z-index: 1;
@@ -166,7 +166,7 @@
             height: 150px;
             .transform(rotate(30deg));
             .transform-origin(50% 0);
-            background: url(../../assets/img/track.png) no-repeat 0 0;
+            background: url(/v-ukulele/assets/img/track.png) no-repeat 0 0;
             -webkit-background-size: contain;
             background-size: contain;
             z-index: 1;
@@ -180,7 +180,7 @@
             margin: 60px auto 0;
             width: 200px;
             height: 200px;
-            background: url(../../assets/img/coverall.png) no-repeat center;
+            background: url(/v-ukulele/assets/img/coverall.png) no-repeat center;
             -webkit-background-size: 200px 200px;
             background-size: 200px 200px;
             .cover {
