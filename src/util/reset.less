@@ -1,0 +1,60 @@
+@import './mixin.less';
+
+html, body,
+p,
+div,
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+article, header, footer, section, nav {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+html, body {
+    .user-select();
+    height: 100%;
+}
+
+body {
+    font: 14px/1.5 'Droid Sans', 'Droid Sans Fallback', 'Helvetica Neue', Helvetica, STHeiTi, sans-serif;
+
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@font-face {
+    font-family: 'ukulele';
+    src:    url('../../assets/fonts/ukulele.eot?rzmvjm');
+    src:    url('../../assets/fonts/ukulele.eot?rzmvjm#iefix') format('embedded-opentype'),
+        url('../../assets/fonts/ukulele.ttf?rzmvjm') format('truetype'),
+        url('../../assets/fonts/ukulele.woff?rzmvjm') format('woff'),
+        url('../../assets/fonts/ukulele.svg?rzmvjm#ukulele') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="ukulele-"],
+[class*=" ukulele-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'ukulele' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
