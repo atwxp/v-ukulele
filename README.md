@@ -5,18 +5,8 @@ a vue music player
 
 ## demo
 
-## tools
+[demo](http://atwxp.github.io/v-ukulele/src/app.html)
 
-- vue
+## todo
 
-- webpack
-
-- gulp
-
-## commands
-
-npm install
-
-gulp build [-e dev]
-
-gulp watch [-e dev]
+体验待完善
