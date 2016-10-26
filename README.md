@@ -1,9 +1,10 @@
 # Vue-Player
 
-
 [a vue music player](http://atwxp.github.io/v-ukulele/output/index.html)
 
-## todo
+![](./qrcode.png)
+
+### todo
 
 - 歌词
 
