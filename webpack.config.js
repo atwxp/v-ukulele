@@ -17,13 +17,13 @@ var abs = function () {
     return path.resolve.apply(null, p);
 };
 
+var isProduction = process.env.NODE_ENV === 'production';
+
 var srcPath = abs('src');
 
 var outputPath = abs('output');
 
-var assetsPath = isProduction ? '/' : '/';
-
-var isProduction = process.env.NODE_ENV === 'production';
+var assetsPath = isProduction ? '/v-ukulele/output/' : '/';
 
 module.exports = {
     context: srcPath,
