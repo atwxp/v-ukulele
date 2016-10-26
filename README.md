@@ -1,7 +1,7 @@
-Vue-Player
-====
+# Vue-Player
 
-[a vue music player]((http://atwxp.github.io/v-ukulele/output/index.html))
+
+[a vue music player](http://atwxp.github.io/v-ukulele/output/index.html)
 
 ## todo
 
