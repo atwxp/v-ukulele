@@ -1,12 +1,13 @@
 Vue-Player
 ====
 
-a vue music player
-
-## demo
-
-[demo](http://atwxp.github.io/v-ukulele/src/app.html)
+[a vue music player]((http://atwxp.github.io/v-ukulele/output/index.html))
 
 ## todo
 
-体验待完善
+- 歌词
+
+- 频谱分析
+
+- UI
+
