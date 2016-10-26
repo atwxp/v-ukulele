@@ -1,7 +1,7 @@
 <template>
     <div class="song-album">
         <ul>
-            <li v-for="song in albums" class="song" v-bind:class="[song.id == playId? 'ukulele-cur' : '']" v-on:click="switchSong(song.id)">
+            <li v-for="song in albums" class="song" v-bind:class="[song.id == playId ? 'ukulele-cur' : '']" v-on:click="switchSong(song.id)">
                 <span class="info">{{song.author}} - {{song.title}}</span>
             </li>
         </ul>
@@ -13,6 +13,7 @@
         props: ['albums', 'playId', 'expand'],
 
         data: function () {
+            return {}
         },
 
         methods: {

@@ -17,12 +17,12 @@
             <span class="used">{{currentTime | timeFormat 'mm:ss'}}</span>
             <span class="total">{{duration | timeFormat 'mm:ss'}}</span>
             <div class="process-bar" v-on:click="seeking($event)">
-                <div class="loading-bar" style="width: {{loadper}};">
+                <div class="loading-bar" v-bind:style="{width: loadper}">
                 </div>
-                <div class="play-bar" style="width: {{playper}};"></div>
+                <div class="play-bar" v-bind:style="{width: playper}"></div>
             </div>
         </div>
-        
+
         <div class="controls">
             <span class="mode" v-on:click="toggleMode">
                 <i class="ukulele-queue" title="列表循环" v-show="mode == 'queue'"></i>
@@ -90,7 +90,7 @@
 
 <style lang="less">
     @import '../util/reset.less';
-    
+
     @-webkit-keyframes rotate {
         from {
             .transform(rotate(0));
@@ -126,7 +126,7 @@
     .player {
         position: relative;
         height: 100%;
-        background: url(/v-ukulele/assets/img/bg.png) no-repeat center;
+        background: url(../assets/img/bg.png) no-repeat center;
         -webkit-background-size: cover;
         background-size: cover;
         z-index: 1;
@@ -151,7 +151,7 @@
                 .author {
                     .single-line();
                     font-weight: normal;
-                    font-size: 13px;                
+                    font-size: 13px;
                     line-height: 1;
                 }
             }
@@ -166,7 +166,7 @@
             height: 150px;
             .transform(rotate(30deg));
             .transform-origin(50% 0);
-            background: url(/v-ukulele/assets/img/track.png) no-repeat 0 0;
+            background: url(../assets/img/track.png) no-repeat 0 0;
             -webkit-background-size: contain;
             background-size: contain;
             z-index: 1;
@@ -180,7 +180,7 @@
             margin: 60px auto 0;
             width: 200px;
             height: 200px;
-            background: url(/v-ukulele/assets/img/coverall.png) no-repeat center;
+            background: url(../assets/img/coverall.png) no-repeat center;
             -webkit-background-size: 200px 200px;
             background-size: 200px 200px;
             .cover {

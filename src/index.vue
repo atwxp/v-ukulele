@@ -7,7 +7,7 @@
         </section>
         <div class="mask" v-bind:class="expand ? 'expand' : ''" v-on:click="expand=!expand"></div>
 
-        <audio id="ukulele" v-on:durationchange="durationchange" v-on:timeupdate="timeupdate" v-on:progress="progress" v-on:ended="ended" v-on:canplay="canplay"  v-on:playing="playing" v-on:waiting="waiting" v-on:seeking="seeking" v-on:seeked="seeked" v-on:loadeddata="loadedata"></audio>
+        <audio id="ukulele" v-on:durationchange="durationchange" v-on:timeupdate="timeupdate" v-on:progress="progress" v-on:ended="ended" v-on:canplay="canplay"  v-on:playing="playing" v-on:waiting="waiting" v-on:seeking="seeking" v-on:seeked="seeked" v-on:loadeddata="loadeddata"></audio>
     </div>
 </template>
 
@@ -164,7 +164,7 @@
                 console.log('canplaythrough');
             },
 
-            // currentTime属性发生改变 
+            // currentTime属性发生改变
             timeupdate: function () {
                 this.currentTime = this.player.currentTime;
 console.log('timeupdate')
@@ -215,7 +215,7 @@ console.log('timeupdate')
 
         events: {
             load: function (id) {
-                this.load(id);
+                this.playId = id || config.albums[0];
             },
 
             prev: function () {
@@ -242,7 +242,7 @@ console.log('timeupdate')
                 }
                 else {
                     var i = config.albums.indexOf(this.playId);
-                    
+
                     this.playId = config.albums[(i + 1) % config.albums.length]
                 }
 

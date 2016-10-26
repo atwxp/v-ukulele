@@ -7,36 +7,63 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var abs = function (p) {
-    return path.join(__dirname, p);
+var abs = function () {
+    var p = [__dirname].concat([].slice.call(arguments));
+
+    return path.resolve.apply(null, p);
 };
 
-var src = abs('src');
-var output = abs('output');
+var srcPath = abs('src');
+
+var outputPath = abs('output');
+
+var assetsPath = isProduction ? '/' : '/';
+
+var isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    context: src,
+    context: srcPath,
 
-    entry: './app.js',
-
-    output: {
-        path: output,
-
-        filename: 'app.js'
+    entry: {
+        index: ['./index.js']
     },
 
+    output: {
+        path: outputPath,
+
+        filename: '[name].js',
+
+        publicPath: assetsPath,
+
+        sourceMapFilename: '[file].map'
+    },
+
+    devtool: isProduction ? null : 'source-map',
+
     module: {
+        preLoaders: [
+            // {
+            //     test: /\.js$/,
+            //     loader: 'fecs-loader',
+            //     exclude: /node_modules/
+            // }
+        ],
+
         loaders: [
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style', 'css')
             },
+
             {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract('style', 'css!less')
             },
+
             {
                 test: /\.(jpe?g|png|gif)$/,
                 loader: 'url',
@@ -47,45 +74,61 @@ module.exports = {
                     name: '[name].[ext]?[hash]'
                 }
             },
+
             {
                 test: /\.(eot|woff|woff2|ttf|svg)([a-z0-9\?#]+)?$/,
                 // loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
                 loader: 'file-loader'
             },
+
             {
                 test: /\.vue$/,
                 loader: 'vue'
             }
         ],
+
         noParse: /\.min\.js/
     },
 
-    // @see: http://vuejs.github.io/vue-loader/configurations/extract-css.html
+    // https://github.com/vuejs-templates/webpack/tree/master/template/build
     vue: {
         loaders: {
-            css: ExtractTextPlugin.extract('css'),
-            less: ExtractTextPlugin.extract('css!less')
+            css: ExtractTextPlugin.extract('vue-style', 'css'),
+            less: ExtractTextPlugin.extract('vue-style', 'css!less')
         }
     },
 
-    plugins: [
-        new ExtractTextPlugin('app.css'),
 
-        // 生产环境下，警告在代码压缩中会被删除
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        }),
+    plugins: (function () {
+        return (isProduction
+            ? [
+                new webpack.optimize.UglifyJsPlugin({
+                    compress: {
+                        warnings: false
+                    }
+                }),
 
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
-    ],
+                new webpack.BannerPlugin('(c) ' + new Date().getFullYear() + ' wxp. All Rights Reserved')
+            ]
+            : []
+            )
+            .concat([
+                new ExtractTextPlugin('[name].css'),
+
+                new HtmlWebpackPlugin({
+                    template: 'index.html'
+                }),
+
+                new CopyWebpackPlugin([{
+                    from: 'assets',
+                    to: 'assets'
+                }])
+            ]);
+    })(),
 
     resolve: {
-        extensions: ['', '.js', '.vue']
+        root: srcPath,
+
+        extensions: ['', '.vue', '.js']
     }
 };

@@ -4,7 +4,7 @@
  */
 
 var Vue = require('vue');
-var App = require('./app.vue');
+var App = require('./index');
 var VueRouter = require('vue-router');
 
 // install router
